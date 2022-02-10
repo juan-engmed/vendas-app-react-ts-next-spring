@@ -8,9 +8,9 @@ interface MenuItemProps {
 export const MenuItem: React.FC<MenuItemProps> = (props: MenuItemProps) => {
     return (
         <li>
-            <Link href={props.href}>
-                <a>
-                    <span className="icon"></span> { props.label } 
+            <Link href={props.href} >
+                <a className="has-text-primary-dark">
+                    <span className="icon"></span> {props.label}
                 </a>
             </Link>
         </li>

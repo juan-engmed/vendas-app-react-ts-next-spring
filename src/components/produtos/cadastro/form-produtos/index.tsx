@@ -1,36 +1,48 @@
+import { Button } from "components/commom/button"
+import { Input } from "components/commom/input"
+import { useState } from "react"
+
 export const FormProdutos: React.FC = () => {
+
+    const [sku, setSku] = useState<string>('')
+    const [price, setPrice] = useState<string>('')
+    const [name, setName] = useState<string>('')
+    const [description, setDescription] = useState<string>('')
+
+    const save = () => {
+        const produto = {
+            sku, price, name, description
+        }
+        console.table(produto)
+    }
 
     return (
         <div>
             <div className="columns">
-                <div className='field column is-half'>
-                    <label className='label' htmlFor="inputSku">SKU: *</label>
-                    <div className="control">
-                        <input className='input'
-                            id='inputSku'
-                            placeholder='Digite o SKU do Produto' />
-                    </div>
-                </div>
-
-                <div className='field column is-half'>
-                    <label className='label' htmlFor="inputPrice">Preço: *</label>
-                    <div className="control">
-                        <input className='input'
-                            id='inputPrice'
-                            placeholder='Digite o Preço do Produto' />
-                    </div>
-                </div>
+                <Input
+                    columnClasses="is-half"
+                    label={"SKU"}
+                    placeholder="Digite o SKU do Produto"
+                    value={sku}
+                    onChange={setSku}
+                />
+                <Input
+                    columnClasses="is-half"
+                    label={"Price"}
+                    placeholder="Digite o Preço do Produto"
+                    value={price}
+                    onChange={setPrice}
+                />
             </div>
 
             <div className="columns">
-                <div className='field column is-half'>
-                    <label className='label' htmlFor="inputName">Nome: *</label>
-                    <div className="control">
-                        <input className='input'
-                            id='inputName'
-                            placeholder='Digite o Nome do Produto' />
-                    </div>
-                </div>
+                <Input
+                    columnClasses="is-half"
+                    label={"Nome"}
+                    placeholder="Digite o Nome do Produto"
+                    value={name}
+                    onChange={setName}
+                />
             </div>
 
             <div className="columns">
@@ -39,18 +51,16 @@ export const FormProdutos: React.FC = () => {
                     <div className="control">
                         <textarea className='textarea'
                             id='inputDescription'
-                            placeholder='Digite a Descrição Detalhada do Produto' />
+                            placeholder='Digite a Descrição Detalhada do Produto'
+                            value={description}
+                            onChange={event => setDescription(event.target.value)}
+                        />
                     </div>
                 </div>
             </div>
 
             <div className="field is-grouped">
-                <div className="control">
-                    <button className="button is-link">Salvar</button>
-                </div>
-                <div className="control">
-                    <button className="button is-link">Voltar</button>
-                </div>
+                <Button typeButton={"is-link"} title={"Salvar"} onClick={save} />
             </div>
         </div>
     )

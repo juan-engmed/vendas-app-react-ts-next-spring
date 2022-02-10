@@ -4,7 +4,8 @@ import { FormProdutos } from './form-produtos'
 export const CadastroProdutos: React.FC = () => {
     return (
         <Layout titulo='Cadastro de Produtos'>
-        <FormProdutos/> 
+
+            <FormProdutos />
 
         </Layout>
     )

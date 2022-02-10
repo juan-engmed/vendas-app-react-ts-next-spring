@@ -8,8 +8,6 @@ interface ILayoutProps {
 
 export const Layout: React.FC<ILayoutProps> = (props: ILayoutProps) => {
 
-
-
     return (
         <div className="app">
             <section className="main-content columns is-fullheight">

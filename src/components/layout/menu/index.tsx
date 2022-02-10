@@ -3,11 +3,11 @@ import { MenuItem } from 'components/layout/menu/menu-item'
 
 export const Menu: React.FC = () => {
     return (
-        <aside className="column is-2 is-narrow-mobile is-fullheight section is-hidden-mobile">
-            <p className="menu-label is-hidden-touch">
+        <aside className="column is-2 is-narrow-mobile is-fullheight section is-hidden-mobile has-background-dark ">
+            <p className="menu-label is-hidden-touch has-text-info-dark ">
                 Minhas Vendas
             </p>
-            <ul className="menu-list">
+            <ul className="menu-list ">
                 <MenuItem href="/" label="Home" />
                 <MenuItem href="/cadastros/produtos" label="Cadastro" />
                 <MenuItem href="/consultas/produtos" label="Produtos" />
