@@ -2,18 +2,29 @@ import { Button } from "components/commom/button"
 import { Input } from "components/commom/input"
 import { useState } from "react"
 
+import { useProdutoService } from "app/services"
+
+import { Produto } from 'app/models/produtos'
+
+
 export const FormProdutos: React.FC = () => {
 
+    const service = useProdutoService()
+
     const [sku, setSku] = useState<string>('')
-    const [price, setPrice] = useState<string>('')
-    const [name, setName] = useState<string>('')
-    const [description, setDescription] = useState<string>('')
+    const [preco, setPreco] = useState<string>('')
+    const [nome, setNome] = useState<string>('')
+    const [descricao, setDescricao] = useState<string>('')
 
     const save = () => {
         const produto = {
-            sku, price, name, description
+            sku, preco: parseFloat(preco), nome, descricao
         }
-        console.table(produto)
+        service.salvar(produto)
+            .then(response => console.log(response))
+            .catch(error => {
+                console.log(error)
+            })
     }
 
     return (
@@ -30,8 +41,8 @@ export const FormProdutos: React.FC = () => {
                     columnClasses="is-half"
                     label={"Price"}
                     placeholder="Digite o Preço do Produto"
-                    value={price}
-                    onChange={setPrice}
+                    value={preco}
+                    onChange={setPreco}
                 />
             </div>
 
@@ -40,8 +51,8 @@ export const FormProdutos: React.FC = () => {
                     columnClasses="is-half"
                     label={"Nome"}
                     placeholder="Digite o Nome do Produto"
-                    value={name}
-                    onChange={setName}
+                    value={nome}
+                    onChange={setNome}
                 />
             </div>
 
@@ -52,15 +63,15 @@ export const FormProdutos: React.FC = () => {
                         <textarea className='textarea'
                             id='inputDescription'
                             placeholder='Digite a Descrição Detalhada do Produto'
-                            value={description}
-                            onChange={event => setDescription(event.target.value)}
+                            value={descricao}
+                            onChange={event => setDescricao(event.target.value)}
                         />
                     </div>
                 </div>
             </div>
 
             <div className="field is-grouped">
-                <Button typeButton={"is-link"} title={"Salvar"} onClick={save} />
+                <Button typeButton={"is-link"} title={"Salvar"} btnFunction={save} />
             </div>
         </div>
     )

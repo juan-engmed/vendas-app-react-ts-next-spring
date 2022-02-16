@@ -1,18 +1,18 @@
 interface IButtonProps {
     typeButton: string
     title: string
-    onClick: (value: any) => void
+    btnFunction: (value: any) => void
 }
 
 export const Button: React.FC<IButtonProps> = ({
-    onClick,
+    btnFunction,
     typeButton,
     title,
 }: IButtonProps) => {
 
     return (
         <div className="control">
-            <button className={`button ${typeButton}`} onClick={onClick}>{title}</button>
+            <button className={`button ${typeButton}`} onClick={btnFunction}>{title}</button>
         </div>
 
     );
