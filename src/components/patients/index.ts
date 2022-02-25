@@ -1,0 +1,1 @@
+export { CadastroPatients } from "./cadastro";
